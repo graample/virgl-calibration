@@ -16,6 +16,25 @@ app.get('/test', (req, res) => {
   res.send('Hello World!')
 })
 
+// POST route
+
+// GET ALL route
+app.get('/animals', (req, res) => {
+  // res.send('test')
+  const getAll = 'SELECT * FROM animals';
+  db.query(getAll, (err, res) => {
+    if (err) {
+      console.log(err.stack)
+    } else {
+      console.log(res.rows[0])
+    }
+  })
+})
+
+// PUT route
+
+// DELETE route
+
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });

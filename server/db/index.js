@@ -14,6 +14,19 @@ pool.on('error', err => {
 
 pool.connect(console.log('pool connected!'));
 
+// module.exports = {
+//   query: (text, params) => pool.query(text, params),
+// };
+
+var query = (query, cb) => {
+  pool.query(query, (err, res) => {
+    if (err) {
+      cb(err, res);
+    }
+    cb(null, res);
+  });
+}
+
 module.exports = {
-  query: (text, params) => pool.query(text, params),
-};
+  query: query
+}

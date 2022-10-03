@@ -1,8 +1,10 @@
 require('dotenv').config()
 const express = require('express');
 const path = require('path')
+const db = require('./db/index.js');
 
 const app = express();
+app.use(express.json());
 
 const hostname = process.env.HOST || '127.0.0.1';
 const port = process.env.PORT || 8000;
